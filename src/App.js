@@ -53,7 +53,7 @@ function App() {
     if (convertFrom != null && convertTo != null) {
       fetch(`${URL}?source=${convertFrom}&symbols=${convertTo}`)
         .then((res) => res.json())
-        .then((data) => setExchangeRate(data.quotes[convertTog]));
+        .then((data) => setExchangeRate(data.quotes[convertTo]));
     }
   }, [convertFrom, convertTo]);
   return (
