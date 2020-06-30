@@ -3,7 +3,7 @@ import "./App.css";
 import ConvertCurrency from "./ConvertCurrency";
 
 let URL =
-  "http://api.currencylayer.com/live?access_key=29494b4273f9e72c94f68651c13de08d";
+  "http://apilayer.net/api/live?access_key=29494b4273f9e72c94f68651c13de08d&currencies=EUR,GBP,CAD,PLN&source=USD&format=1";
 
 let toAmount, fromAmount;
 
@@ -14,7 +14,9 @@ function App() {
   const [amount, setAmount] = useState(1);
   const [amountFrom, setAmountFrom] = useState(true);
   const [exchangeRate, setExchangeRate] = useState();
- 
+
+  console.log(exchangeRate);
+
   useEffect(() => {
     fetch(URL)
       .then((res) => res.json())
@@ -51,7 +53,7 @@ function App() {
     if (convertFrom != null && convertTo != null) {
       fetch(`${URL}?source=${convertFrom}&symbols=${convertTo}`)
         .then((res) => res.json())
-        .then((data) => setExchangeRate(data.quotes[convertTo.slice(3)]));
+        .then((data) => setExchangeRate(data.quotes[convertTog]));
     }
   }, [convertFrom, convertTo]);
   return (
